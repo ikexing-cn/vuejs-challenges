@@ -1,6 +1,6 @@
 <script setup lang='ts'>
 
-import { ref } from "vue"
+import { ref, watch } from "vue"
 
 /**
  * Implement the composable function
@@ -9,7 +9,9 @@ import { ref } from "vue"
 function useLocalStorage(key: string, initialValue: any) {
   const value = ref(initialValue)
 
-  return value
+  watch(value, (val) => { localStorage.setItem(key, JSON.stringify(val)) })
+
+  return localStorage.getItem(key) ?? value
 }
 
 const counter = useLocalStorage("counter", 0)

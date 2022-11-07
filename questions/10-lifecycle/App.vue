@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, provide } from "vue"
+import { ref, provide, onMounted } from "vue"
 import Child from "./Child.vue"
 
 const visible = ref(true)
@@ -11,6 +11,7 @@ provide("count", count)
 function toggle() {
   visible.value = !visible.value
 }
+
 </script>
 
 <template>
